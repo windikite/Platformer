@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c34q2gfgrfw0w"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_wvugd"]
+[ext_resource type="PackedScene" uid="uid://dlj5upvadnrae" path="res://player.tscn" id="2_spfko"]
+[ext_resource type="PackedScene" uid="uid://bimsvffmp7wcc" path="res://spikes.tscn" id="3_dcdkv"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_wvugd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 88, 64, 96, 72, 144, 72, 168, 80, 176, 120, 176, 136, 168, 136, 136, 176, 136, 176, 120, 200, 120, 200, 192, 232, 192, 232, 80, 272, 80, 272, 112, 288, 112, 288, 168, 328, 168, 328, 136, 312, 136, 312, 120, 336, 120, 336, 80, 328, 80, 328, 64, 360, 64, 368, 56, 368, 0, 384, 0, 384, 232, 0, 232)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+unique_name_in_owner = true
+color = Color(0.25098, 0.168627, 0.0196078, 1)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(280, 24, 304, 24, 304, 32, 280, 32)
+
+[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D2"]
+unique_name_in_owner = true
+color = Color(0.25098, 0.168627, 0.0196078, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_spfko")]
+position = Vector2(40, 80)
+
+[node name="Spikes" parent="." instance=ExtResource("3_dcdkv")]
+position = Vector2(208, 192)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_dcdkv")]
+position = Vector2(224, 192)
